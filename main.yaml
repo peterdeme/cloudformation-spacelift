@@ -10,4 +10,4 @@ Resources:
         PasswordLength: 30
       Tags:
         - Key: AppName
-          Value: AppA
+          Value: AppA2
