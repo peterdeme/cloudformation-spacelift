@@ -5,7 +5,7 @@ Resources:
       Name: MySecretForAppA
       Description: "This secret has a dynamically generated secret password."
       GenerateSecretString:
-        SecretStringTemplate: '{"username": "test-user"}'
+        SecretStringTemplate: '{"username": "test-userr"}'
         GenerateStringKey: "password"
         PasswordLength: 30
       Tags:
