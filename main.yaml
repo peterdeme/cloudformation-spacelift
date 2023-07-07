@@ -2,7 +2,7 @@ Resources:
   MySecretA:
     Type: 'AWS::SecretsManager::Secret'
     Properties:
-      Name: MySecretForAppA
+      Name: MySecretForAppARandom
       Description: "This secret has a dynamically generated secret password."
       GenerateSecretString:
         SecretStringTemplate: '{"username": "test-userr"}'
@@ -11,38 +11,44 @@ Resources:
       Tags:
         - Key: AppName
           Value: AppA2
-  MyLambdaFunction:
-    Type: 'AWS::Lambda::Function'
-    Properties:
-      CodeUri: ./lambda.py
-      Handler: index.lambda_handler
-      Role: !GetAtt MyLambdaRole.Arn
-      Runtime: python3.8
-      Timeout: 3
-  MyLambdaRole:
-    Type: 'AWS::IAM::Role'
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - lambda.amazonaws.com
-            Action:
-              - 'sts:AssumeRole'
-      Policies:
-        - PolicyName: MyLambdaPolicy
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: Allow
-                Action:
-                  - 'logs:CreateLogGroup'
-                  - 'logs:CreateLogStream'
-                  - 'logs:PutLogEvents'
-                Resource: 'arn:aws:logs:*:*:*'
-              - Effect: Allow
-                Action:
-                  - 'secretsmanager:GetSecretValue'
-                Resource: !GetAtt MySecretA.Arn
+Outputs:
+  MySecretOutput:
+    Value: !Ref MySecretA
+    Description: "My secret ARN"
+
+
+  # MyLambdaFunction:
+  #   Type: 'AWS::Lambda::Function'
+  #   Properties:
+  #     CodeUri: ./lambda.py
+  #     Handler: index.lambda_handler
+  #     Role: !GetAtt MyLambdaRole.Arn
+  #     Runtime: python3.8
+  #     Timeout: 3
+  # MyLambdaRole:
+  #   Type: 'AWS::IAM::Role'
+  #   Properties:
+  #     AssumeRolePolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #         - Effect: Allow
+  #           Principal:
+  #             Service:
+  #               - lambda.amazonaws.com
+  #           Action:
+  #             - 'sts:AssumeRole'
+  #     Policies:
+  #       - PolicyName: MyLambdaPolicy
+  #         PolicyDocument:
+  #           Version: '2012-10-17'
+  #           Statement:
+  #             - Effect: Allow
+  #               Action:
+  #                 - 'logs:CreateLogGroup'
+  #                 - 'logs:CreateLogStream'
+  #                 - 'logs:PutLogEvents'
+  #               Resource: 'arn:aws:logs:*:*:*'
+  #             - Effect: Allow
+  #               Action:
+  #                 - 'secretsmanager:GetSecretValue'
+  #               Resource: !GetAtt MySecretA.Arn
