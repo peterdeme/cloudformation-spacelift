@@ -7,4 +7,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       StackName: NestedStackOfNoOpStack
-      TemplateURL: https://preprod-cf.s3.eu-central-1.amazonaws.com/main.yaml
+      TemplateBody: |
+        Resources:
+          NoOpResource:
+            Type: AWS::CloudFormation::WaitConditionHandle
