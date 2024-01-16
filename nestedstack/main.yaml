@@ -1,0 +1,24 @@
+Resources:
+  MyStackWithParams:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateBody: |
+        AWSTemplateFormatVersion: '2010-09-09'
+        Parameters:
+          KeyName:
+            Type: String
+        Resources:
+          MyInstance:
+            Type: AWS::SecretsManager::Secret
+            Properties:
+              Name: MySecretForNestedStack
+              Description: "This secret has a dynamically generated secret password."
+              GenerateSecretString:
+                SecretStringTemplate: '{"username": "test-userr"}'
+                GenerateStringKey: "password"
+                PasswordLength: 10
+              Tags:
+                - Key: AppName
+                  Value: !Ref KeyName
+      Parameters:
+        KeyName: mykey

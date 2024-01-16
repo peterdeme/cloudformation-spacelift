@@ -7,7 +7,7 @@ Resources:
       GenerateSecretString:
         SecretStringTemplate: '{"username": "test-userr"}'
         GenerateStringKey: "password"
-        PasswordLength: 0
+        PasswordLength: 10
       Tags:
         - Key: AppName
           Value: AppA2
