@@ -1,15 +1,11 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
 Resources:
-  MyStackWithParams:
+  NoopNestedStack:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateBody: |
+        AWSTemplateFormatVersion: '2010-09-09'
         Resources:
-          NoopWaitConditionHandle:
-            Type: AWS::CloudFormation::WaitConditionHandle
-
-          NoopWaitCondition:
+          NoopResource:
             Type: AWS::CloudFormation::WaitCondition
-            DependsOn: NoopWaitConditionHandle
-            Properties:
-              Handle: !Ref NoopWaitConditionHandle
-              Timeout: '1'
