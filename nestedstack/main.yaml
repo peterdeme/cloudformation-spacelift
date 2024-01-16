@@ -8,7 +8,11 @@ Resources:
     Properties:
       StackName: NestedStackOfNoOpStack
       TemplateBody: >
-        AWSTemplateFormatVersion: '2010-09-09'
-        Resources:
-          AnotherNoOp:
-            Type: AWS::CloudFormation::WaitConditionHandle
+        {
+          "AWSTemplateFormatVersion": "2010-09-09",
+          "Resources": {
+            "AnotherNoOp": {
+              "Type": "AWS::CloudFormation::WaitConditionHandle"
+            }
+          }
+        }
