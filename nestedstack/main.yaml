@@ -4,12 +4,12 @@ Resources:
     Properties:
       TemplateBody: |
         Resources:
-          MySecret:
-            Type: AWS::SecretsManager::Secret
+          NoopWaitConditionHandle:
+            Type: AWS::CloudFormation::WaitConditionHandle
+
+          NoopWaitCondition:
+            Type: AWS::CloudFormation::WaitCondition
+            DependsOn: NoopWaitConditionHandle
             Properties:
-              Name: MySecretForNestedStack
-              Description: "This secret has a dynamically generated secret password."
-              GenerateSecretString:
-                SecretStringTemplate: '{"username": "test-userr"}'
-                GenerateStringKey: "password"
-                PasswordLength: 10
+              Handle: !Ref NoopWaitConditionHandle
+              Timeout: '1'
