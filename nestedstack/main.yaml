@@ -3,12 +3,8 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateBody: |
-        AWSTemplateFormatVersion: '2010-09-09'
-        Parameters:
-          KeyName:
-            Type: String
         Resources:
-          MyInstance:
+          MySecret:
             Type: AWS::SecretsManager::Secret
             Properties:
               Name: MySecretForNestedStack
@@ -17,8 +13,3 @@ Resources:
                 SecretStringTemplate: '{"username": "test-userr"}'
                 GenerateStringKey: "password"
                 PasswordLength: 10
-              Tags:
-                - Key: AppName
-                  Value: !Ref KeyName
-      Parameters:
-        KeyName: mykey
