@@ -3,11 +3,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Resources:
   WaitConditionHandle:
     Type: AWS::CloudFormation::WaitConditionHandle
-  # NoopNestedStack:
-  #   Type: AWS::CloudFormation::Stack
-  #   Properties:
-  #     TemplateBody: |
-  #       AWSTemplateFormatVersion: '2010-09-09'
-  #       Resources:
-  #         NoopResource:
-  #           Type: AWS::CloudFormation::WaitCondition
+  NoopNestedStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateBody: |
+        AWSTemplateFormatVersion: '2010-09-09'
+        Resources:
+          NoopResource:
+            Type: AWS::CloudFormation::WaitCondition
