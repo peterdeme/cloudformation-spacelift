@@ -1,9 +1,11 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: 'AWS::Serverless-2016-10-31'
 
 Resources:
-  # substack
-  LambdaTemplate:
-    Type: AWS::Serverless::Application
+  AnotherNoOpStack:
+    Type: AWS::CloudFormation::Stack
     Properties:
-      Location: ./substack.yaml
+      TemplateBody: >
+        AWSTemplateFormatVersion: '2010-09-09'
+        Resources:
+          AnotherNoOp:
+            Type: AWS::CloudFormation::WaitConditionHandle
