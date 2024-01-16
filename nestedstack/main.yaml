@@ -3,12 +3,12 @@ AWSTemplateFormatVersion: '2010-09-09'
 Resources:
   WaitConditionHandle:
     Type: AWS::CloudFormation::WaitConditionHandle
-  # AnotherNoOpStack:
-  #   Type: AWS::CloudFormation::Stack
-  #   Properties:
-  #     RoleARN: arn:aws:iam::705096403113:role/Preprod
-  #     TemplateBody: >
-  #       AWSTemplateFormatVersion: '2010-09-09'
-  #       Resources:
-  #         AnotherNoOp:
-  #           Type: AWS::CloudFormation::WaitConditionHandle
+  AnotherNoOpStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      StackName: NestedStackOfNoOpStack
+      TemplateBody: >
+        AWSTemplateFormatVersion: '2010-09-09'
+        Resources:
+          AnotherNoOp:
+            Type: AWS::CloudFormation::WaitConditionHandle
