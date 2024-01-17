@@ -1,11 +1,15 @@
 # main.yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Description: A simple EC2 instance
+Mappings: 
+  RegionMap:
+    eu-west-2:
+      AMI: ami-006589d4be3244642
 Resources:
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-006589d4be3244642
+      ImageId: {"Fn::FindInMap": ["RegionMap", {"Ref": "AWS::Region"}, "AMI"]}
       InstanceType: "t2.micro"
       Tags:
         - Key: "key"
