@@ -5,8 +5,7 @@ Resources:
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: eu-central-1a
-      ImageId: ami-07df274a488ca9195
+      ImageId: ami-006589d4be3244642
       InstanceType: "t2.micro"
       Tags:
         - Key: "key"
