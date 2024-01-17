@@ -9,7 +9,7 @@ Resources:
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: {"Fn::FindInMap": ["RegionMap", {"Ref": "AWS::Region"}, "AMI"]}
+      ImageId: ami-006589d4be3244642
       InstanceType: "t2.micro"
       Tags:
         - Key: "key"

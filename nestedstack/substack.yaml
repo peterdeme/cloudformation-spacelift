@@ -1,13 +1,15 @@
-# substack.yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Description: A simple EC2 instance
+Mappings: 
+  RegionMap:
+    eu-west-2:
+      AMI: ami-006589d4be3244642
 Resources:
   MyEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      AvailabilityZone: eu-central-1a
-      ImageId: ami-07df274a488ca9195
-      InstanceType: t2.micro
+      ImageId: {"Fn::FindInMap": ["RegionMap", {"Ref": "AWS::Region"}, "AMI"]}
+      InstanceType: t2.microo
       Tags:
-        - Key: "key"
-          Value: "value5"
+      - Key: key
+        Value: value5
