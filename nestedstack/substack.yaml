@@ -1,4 +1,4 @@
-# main.yaml
+# substack.yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Description: A simple EC2 instance
 Resources:
@@ -7,14 +7,7 @@ Resources:
     Properties:
       AvailabilityZone: eu-central-1a
       ImageId: ami-07df274a488ca9195
-      InstanceType: "t2.micro"
+      InstanceType: t2.micro
       Tags:
         - Key: "key"
           Value: "value5"
-  SecondEC2Stack:
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      TemplateURL: substack.yaml
-Outputs:
-  InstanceRef:
-    Value: !Ref MyEC2Instance
