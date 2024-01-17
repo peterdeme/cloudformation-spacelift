@@ -28,5 +28,12 @@ Resources:
     Properties:
       FunctionName: 'poc-lambda'
       Role: !GetAtt LambdaExecutionRole.Arn
-      PackageType: Image
-      ImageUri: alpine:latest
+      Runtime: nodejs12.x
+      InlineCode: |
+        exports.handler = async (event) => {
+          console.log('event', event);
+          return {
+            statusCode: 200,
+            body: JSON.stringify('Hello from Lambda!'),
+          };
+        };
