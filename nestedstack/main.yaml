@@ -14,7 +14,7 @@ Resources:
   SecondEC2Stack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: substack.yaml
+      TemplateURL: https://preprod-cf.s3.eu-central-1.amazonaws.com/01HMBS7FA91T21RKNA3BY7JYK6/11d53ebd6612a5b969993cf58c811e71.template
 Outputs:
   InstanceRef:
     Value: !Ref MyEC2Instance
